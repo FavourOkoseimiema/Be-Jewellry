@@ -49,6 +49,16 @@ function App() {
       name: "Portable Electric Fan",
       price: 7500,
       image: "https://images.unsplash.com/photo-1718815416565-c65944a5ec14?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZWxlY3RyaWMlMjBmYW58ZW58MHx8MHx8fDA%3D"
+    },
+    {id:"8",
+      name:"Human Hair Wig",
+      price:65000,
+      image:"https://images.unsplash.com/photo-1663582816222-0058880a9fdc?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGh1bWFuJTIwaGFpciUyMHdpZ3xlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {id:"9",
+      name:"Coco Noir Chanel",
+      price:85000,
+      image:"https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVyZnVtZXxlbnwwfHwwfHx8MA%3D%3D"
     }
   ]
 
