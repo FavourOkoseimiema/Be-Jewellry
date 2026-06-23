@@ -1,6 +1,6 @@
 function ProductCard(props){
 return(
-    <div className="bg-white shadow-lg rounded-xl p-4 hover:shadow:xl transition">
+    <div data-aos="fade-up" className="bg-white shadow-lg rounded-xl p-4 hover:shadow-2xl transition-all duration-300">
         <img 
           src={props.product.image}
           className="w-full h-60 object-cover rounded-lg mb-4"
