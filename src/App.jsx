@@ -2,6 +2,7 @@ import { useState } from "react"
 import ProductList from "./components/ProductList";
 import Navbar from "./components/Navbar"
 import Cart from "./components/Cart";
+import Footer from "./components/Footer";
 function App() {
 
   const products = [
@@ -79,6 +80,7 @@ function App() {
       />
 
       <Cart cart={cart} />
+      <Footer/>
 
     </div>
   )
