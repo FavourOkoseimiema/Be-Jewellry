@@ -13,7 +13,7 @@ function Footer() {
     <footer className="flex flex-col items-center mt-10 py-6 border-t">
       <div className="flex justify-center gap-6 text-2xl">
         {socials.map((social) => (
-          <a key={social.name} href="#" className="transition-transform duration-300 hover:text-pink-500">
+          <a key={social.name} href="#" className="transition-transform duration-300 hover:text-pink-500 hover:scale-125">
             {social.icon}
           </a>
         ))}

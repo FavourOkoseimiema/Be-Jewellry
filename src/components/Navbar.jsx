@@ -1,4 +1,4 @@
-import { IoIosCart } from "react-icons/io";
+import { TiShoppingCart } from "react-icons/ti";
 import { FaShoppingBag } from "react-icons/fa";
 function Navbar(props){
     return(
@@ -7,10 +7,10 @@ function Navbar(props){
                 Mini Storefront
             </h1>
 
-            <h2 className="flex items-center justify-end text-lg font-semibold">
-                <IoIosCart size={20} className="text-red-500"/>
-                ({props.cart.length})
-            </h2>
+            <button onClick={()=>props.setShowCart(!props.showCart)} className="flex items-center justify-end text-lg font-semibold">
+                <TiShoppingCart size={30} className="text-red-500 transition-transform hover:scale-125"/>
+                <sup>{props.cart.length}</sup>
+            </button >
 
         </nav>
     )
