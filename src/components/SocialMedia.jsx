@@ -1,14 +1,52 @@
+import React from "react";
+// Importing sleek, modern brand icons from react-icons
+import { FaFacebookF, FaInstagram } from "react-icons/fa6";
+import { IoLogoTwitter } from "react-icons/io5";
+
 function SocialMediaLinks() {
+  const socials = [
+    { 
+      name: "Facebook", 
+      url: "https://facebook.com/dummyjewelry", 
+      icon: <FaFacebookF className="w-4 h-4" /> 
+    },
+    { 
+      name: "Instagram", 
+      url: "https://instagram.com/dummyjewelry", 
+      icon: <FaInstagram className="w-4.5 h-4.5" /> 
+    },
+    { 
+      name: "Twitter", 
+      url: "https://twitter.com/dummyjewelry", 
+      icon: <IoLogoTwitter className="w-4.5 h-4.5" /> 
+    },
+  ];
+
   return (
-    <div className="social-media">
-      <h3>Follow Us</h3>
-      <ul>
-        <li><a href="https://facebook.com/dummyjewelry" target="_blank" rel="noreferrer">Facebook</a></li>
-        <li><a href="https://instagram.com/dummyjewelry" target="_blank" rel="noreferrer">Instagram</a></li>
-        <li><a href="https://twitter.com/dummyjewelry" target="_blank" rel="noreferrer">Twitter</a></li>
+    <div className="w-full max-w-md mx-auto text-center py-8 bg-stone-950">
+      {/* Elegant Subtitle Heading */}
+      <h3 className="font-serif text-xs tracking-[0.25em] uppercase text-stone-400 mb-6 font-light">
+        Connect With Us
+      </h3>
+      
+      {/* Interactive Icon Ribbon */}
+      <ul className="flex items-center justify-center gap-5">
+        {socials.map((social) => (
+          <li key={social.name}>
+            <a 
+              href={social.url} 
+              target="_blank" 
+              rel="noreferrer"
+              aria-label={`Follow us on ${social.name}`}
+              className="flex items-center justify-center w-10 h-10 rounded-full border border-stone-900 bg-stone-900/20 text-stone-400 hover:text-black hover:bg-amber-500 hover:border-amber-500 transition-all duration-300 ease-out active:scale-95 shadow-md"
+            >
+              {social.icon}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   );
 }
 
-export default SocialMediaLinks
+export default SocialMediaLinks;
