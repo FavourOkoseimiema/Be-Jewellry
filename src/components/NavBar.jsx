@@ -50,7 +50,6 @@ function Navbar({ cartCount = 0, wishlistCount = 2 }) {
               Shop
             </span>
             
-            {/* Minimalist Dropdown menu */}
             <div className="absolute top-full left-0 hidden group-hover:block bg-white border border-stone-100 shadow-xl py-4 px-6 min-w-[180px] mt-1 transition-all duration-200">
               <ul className="flex flex-col gap-3 text-[11px] tracking-wider text-stone-500">
                 <li><a href="#rings" className="hover:text-amber-600 block transition-colors">Rings</a></li>
@@ -66,13 +65,11 @@ function Navbar({ cartCount = 0, wishlistCount = 2 }) {
         </nav>
 
         <div className="flex items-center gap-6 text-stone-700 flex-1 lg:flex-none justify-end">
-          
-          {/* Animated Search Bar Toggle */}
           <div className="flex items-center relative">
             <input 
               type="text" 
               placeholder="Search..." 
-              className={`border-b border-stone-300 focus:border-amber-600 outline-none text-xs py-1 transition-all duration-300 bg-transparent ${
+              className={`border-b border-stone-300 focus:border-amber-600 outline-none text-xs py-1 transition-all duration-300 bg-transparent ₦{
                 searchOpen ? "w-32 opacity-100 mr-2" : "w-0 opacity-0 pointer-events-none"
               }`}
             />
@@ -81,7 +78,6 @@ function Navbar({ cartCount = 0, wishlistCount = 2 }) {
             </button>
           </div>
 
-          /* User Profile */
           <button className="hover:text-amber-600 transition-colors" aria-label="Account">
             <UserIcon />
           </button>
