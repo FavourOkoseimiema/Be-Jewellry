@@ -1,3 +1,4 @@
+import ProductCard from "./ProductCard";
 function ProductShowcase({ products, addToCart }) {
   return (
     <div className="products">
@@ -5,11 +6,7 @@ function ProductShowcase({ products, addToCart }) {
       <div className="product-list">
         {products.map((product) => (
           <div key={product.id} className="product-card">
-            <img src="https://via.placeholder.com/150" alt={product.name} />
-            <h4>{product.name}</h4>
-            <p>{product.description}</p>
-            <p>${product.price}</p>
-            <button onClick={() => addToCart(product)}>Add to Cart</button>
+            <ProductCard/>
           </div>
         ))}
       </div>
