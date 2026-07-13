@@ -1,25 +1,28 @@
 import React from "react";
-// Importing sleek, modern brand icons from react-icons
-import { FaFacebookF, FaInstagram } from "react-icons/fa6";
-import { IoLogoTwitter } from "react-icons/io5";
+import { FaFacebookF, FaInstagram,FaWhatsapp , FaTiktok} from "react-icons/fa6";
 
 function SocialMediaLinks() {
   const socials = [
     { 
       name: "Facebook", 
-      url: "https://facebook.com/dummyjewelry", 
+      url: "https://facebook.com/Blessing Ajah", 
       icon: <FaFacebookF className="w-4 h-4" /> 
     },
     { 
       name: "Instagram", 
-      url: "https://instagram.com/dummyjewelry", 
+      url: "https://instagram.com/glammybee8", 
       icon: <FaInstagram className="w-4.5 h-4.5" /> 
     },
     { 
-      name: "Twitter", 
-      url: "https://twitter.com/dummyjewelry", 
-      icon: <IoLogoTwitter className="w-4.5 h-4.5" /> 
+      name: "Whatsapp", 
+      url: "https://wa.me/2347019963931", 
+      icon: <FaWhatsapp  className="w-4.5 h-4.5" /> 
     },
+    {
+      name:"tiktok",
+      url:"https://tiktok.com/@bejewelryportharcourt",
+      icon:<FaTiktok size={18} />
+    }
   ];
 
   return (
@@ -29,7 +32,7 @@ function SocialMediaLinks() {
         Connect With Us
       </h3>
       
-      {/* Interactive Icon Ribbon */}
+    
       <ul className="flex items-center justify-center gap-5">
         {socials.map((social) => (
           <li key={social.name}>

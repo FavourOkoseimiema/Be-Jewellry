@@ -1,112 +1,377 @@
 import React, { useState } from "react";
+import {
+  FiHeart,
+  FiUser,
+  FiShoppingBag,
+  FiMenu,
+  FiX,
+  FiChevronDown
+} from "react-icons/fi";
 
-// Premium, clean SVG Icons for a luxury aesthetic
-const SearchIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-);
 
-const HeartIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-);
+function Navbar({cartCount = 0, wishlistCount = 0, setShowCart}) {
 
-const UserIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-);
+const [mobileMenuOpen,setMobileMenuOpen] = useState(false);
+const [shopOpen,setShopOpen] = useState(false);
 
-const CartIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-);
 
-function Navbar({ cartCount = 0, wishlistCount = 2 }) {
-  const [searchOpen, setSearchOpen] = useState(false);
+return (
 
-  return (
-    <header className="w-full fixed top-0 left-0 z-50 bg-white/80 backdrop-blur-md border-b border-stone-100 shadow-sm transition-all duration-300">
-      
-      {/* 1. Announcement Bar */}
-      <div className="bg-stone-900 text-stone-100 text-[10px] tracking-widest uppercase py-2 text-center font-light">
-        Free Complimentary Shipping on Orders Over $250
-      </div>
+<>
 
-      {/* Main Navigation Container */}
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        
-        {/* 2. Logo (Elegant Serif Font) */}
-        <div className="flex-1 lg:flex-none">
-          <h1 className="text-xl md:text-2xl font-serif tracking-widest uppercase font-medium text-stone-800 cursor-pointer hover:opacity-70 transition-opacity">
-            Be-Jewelry Co.
-          </h1>
-        </div>
+<header className="fixed top-0 left-0 w-full z-50 bg-stone-50/95 backdrop-blur-md border-b border-stone-200 scroll-mt-28">
 
-        {/* 3. Center Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-8 text-xs font-light tracking-widest text-stone-600 uppercase">
-          <a href="#home" className="hover:text-amber-600 transition-colors duration-300">
-            Home
-          </a>
-          
-          {/* Shop Dropdown Trigger */}
-          <div className="relative group cursor-pointer py-2">
-            <span className="hover:text-amber-600 transition-colors duration-300 flex items-center gap-1">
-              Shop
-            </span>
-            
-            <div className="absolute top-full left-0 hidden group-hover:block bg-white border border-stone-100 shadow-xl py-4 px-6 min-w-[180px] mt-1 transition-all duration-200">
-              <ul className="flex flex-col gap-3 text-[11px] tracking-wider text-stone-500">
-                <li><a href="#rings" className="hover:text-amber-600 block transition-colors">Rings</a></li>
-                <li><a href="#necklaces" className="hover:text-amber-600 block transition-colors">Necklaces</a></li>
-                <li><a href="#earrings" className="hover:text-amber-600 block transition-colors">Earrings</a></li>
-                <li><a href="#bracelets" className="hover:text-amber-600 block transition-colors">Bracelets</a></li>
-              </ul>
-            </div>
-          </div>
 
-          <a href="#about" className="hover:text-amber-600 transition-colors duration-300">About</a>
-          <a href="#contact" className="hover:text-amber-600 transition-colors duration-300">Contact</a>
-        </nav>
+{/* Announcement */}
 
-        <div className="flex items-center gap-6 text-stone-700 flex-1 lg:flex-none justify-end">
-          <div className="flex items-center relative">
-            <input 
-              type="text" 
-              placeholder="Search..." 
-              className={`border-b border-stone-300 focus:border-amber-600 outline-none text-xs py-1 transition-all duration-300 bg-transparent ₦{
-                searchOpen ? "w-32 opacity-100 mr-2" : "w-0 opacity-0 pointer-events-none"
-              }`}
-            />
-            <button onClick={() => setSearchOpen(!searchOpen)} className="hover:text-amber-600 transition-colors" aria-label="Search">
-              <SearchIcon />
-            </button>
-          </div>
+<div className="
+bg-stone-900
+text-stone-100
+text-[10px]
+tracking-[0.3em]
+uppercase
+text-center
+py-3
+">
 
-          <button className="hover:text-amber-600 transition-colors" aria-label="Account">
-            <UserIcon />
-          </button>
+Free Complimentary Shipping On Orders Over ₦250,000
 
-          
-          <button className="hover:text-amber-600 transition-colors relative" aria-label="Wishlist">
-            <HeartIcon />
-            {wishlistCount > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 bg-amber-600 text-white text-[9px] w-3.5 h-3.5 rounded-full flex items-center justify-center font-sans font-medium">
-                {wishlistCount}
-              </span>
-            )}
-          </button>
+</div>
 
-          {/* Cart Icon with Numeric Count */}
-          <button className="hover:text-amber-600 transition-colors relative flex items-center gap-1.5" aria-label="Cart">
-            <CartIcon />
-            <span className="text-xs font-light text-stone-500 hidden sm:inline">({cartCount})</span>
-            {cartCount > 0 && (
-              <span className="sm:hidden absolute -top-1.5 -right-1.5 bg-stone-900 text-white text-[9px] w-3.5 h-3.5 rounded-full flex items-center justify-center font-sans font-medium">
-                {cartCount}
-              </span>
-            )}
-          </button>
 
-        </div>
-      </div>
-    </header>
-  );
+
+<div className="
+max-w-7xl
+mx-auto
+px-4
+sm:px-6
+lg:px-8
+h-20
+flex
+items-center
+justify-between
+">
+
+
+{/* LOGO */}
+
+<h1 className="
+font-serif
+text-xl
+sm:text-2xl
+tracking-[0.25em]
+uppercase text-stone-900">
+Be-Jewelry
+</h1>
+
+
+
+{/* DESKTOP NAV */}
+
+<nav className="
+hidden
+lg:flex
+items-center
+gap-10
+text-xs
+tracking-[0.25em]
+uppercase
+text-stone-600
+">
+
+
+<a href="#home"
+className="hover:text-amber-700 transition">
+Home
+</a>
+
+
+
+<div className="relative group">
+
+<button
+className="
+flex
+items-center
+gap-1
+hover:text-amber-700
+transition
+">
+
+Shop
+
+<FiChevronDown
+size={13}
+/>
+
+</button>
+
+
+
+<div className="absolute top-8
+left-0 hidden group-hover:block bg-white shadow-xl border border-stone-200 w-48 p-5 ">
+<a href="#rings"
+className="block py-2 hover:text-amber-700">
+Rings
+</a>
+<a href="#necklaces"className="block py-2 hover:text-amber-700">
+Necklaces
+</a>
+<a href="#bracelets"
+className="block py-2 hover:text-amber-700">
+Bracelets
+</a>
+<a href="#earrings"
+className="block py-2 hover:text-amber-700">
+Earrings
+</a>
+</div>
+</div>
+<a href="#about"
+className="hover:text-amber-700 transition">
+About
+</a>
+<a href="#contact"
+className="hover:text-amber-700 transition">
+Contact
+</a>
+</nav>
+{/* ICON AREA */}
+<div className="
+flex
+items-center
+gap-5
+text-stone-800
+">
+
+
+<button>
+<FiUser size={20}/>
+</button>
+
+
+
+<button className="relative">
+
+<FiHeart size={20}/>
+
+{
+wishlistCount > 0 &&
+<span className="
+absolute
+-negative
+top-[-8px]
+right-[-8px]
+bg-amber-700
+text-white
+rounded-full
+text-[9px]
+w-4
+h-4
+flex
+items-center
+justify-center
+">
+
+{wishlistCount}
+
+</span>
 }
 
+</button>
+
+
+
+
+<button
+onClick={()=>setShowCart(true)}
+className="relative"
+>
+
+<FiShoppingBag size={20}/>
+
+
+{
+cartCount >0 &&
+<span className="
+absolute
+top-[-8px]
+right-[-8px]
+bg-stone-900
+text-white
+rounded-full
+text-[9px]
+w-4
+h-4
+flex
+items-center
+justify-center
+">
+
+{cartCount}
+
+</span>
+}
+
+
+</button>
+
+
+
+<button
+className="lg:hidden"
+onClick={()=>setMobileMenuOpen(!mobileMenuOpen)}
+>
+
+{
+mobileMenuOpen?
+<FiX size={25}/>:
+<FiMenu size={25}/>
+}
+
+</button>
+
+
+</div>
+
+
+</div>
+
+</header>
+{/* MOBILE OVERLAY */}
+
+<div
+className={`
+fixed
+inset-0
+bg-black/50
+z-40
+lg:hidden
+transition-opacity
+duration-300
+${mobileMenuOpen 
+? "opacity-100 pointer-events-auto" 
+: "opacity-0 pointer-events-none"}
+`}
+onClick={()=>setMobileMenuOpen(false)}
+>
+
+</div>
+
+
+
+
+{/* MOBILE DRAWER */}
+
+<div
+className={`
+fixed
+top-0
+right-0
+h-screen
+w-[80%]
+max-w-sm
+bg-stone-50
+z-50
+shadow-2xl
+lg:hidden
+transition-transform
+duration-500
+${mobileMenuOpen
+? "translate-x-0"
+: "translate-x-full"}
+`}
+>
+
+
+<div className="
+flex
+justify-between
+items-center
+px-6
+pt-8
+pb-6
+border-b
+border-stone-200
+">
+
+
+<h2 className="
+font-serif
+tracking-widest
+uppercase
+text-stone-900
+">
+Be-Jewelry
+</h2>
+
+
+<button
+onClick={()=>setMobileMenuOpen(false)}
+className="
+text-stone-700
+hover:text-amber-700
+">
+<FiX size={25}/>
+</button>
+</div>
+<nav className="flex flex-col px-6 py-8 gap-6 text-sm uppercase tracking-[0.25em] text-stone-700">
+<a 
+href="#home"
+onClick={()=>setMobileMenuOpen(false)}
+className="hover:text-amber-700 transition">
+Home
+</a>
+<div>
+<button
+onClick={()=>setShopOpen(!shopOpen)}
+className="flex items-center justify-between w-full hover:text-amber-700">
+Shop<FiChevronDown className={`transition-transform${shopOpen ? "rotate-180":""}`}/></button>
+<div
+className={`overflow-hidden transition-all duration-300 ${shopOpen ? "max-h-60 mt-4": "max-h-0"}`}>
+<div className="flex flex-col gap-4 pl-4 text-xs text-stone-500">
+<a 
+href="#rings"
+onClick={()=>setMobileMenuOpen(false)}>
+Rings
+</a>
+<a 
+href="#necklaces"
+onClick={()=>setMobileMenuOpen(false)}
+>
+Necklaces
+</a>
+<a 
+href="#bracelets"
+onClick={()=>setMobileMenuOpen(false)}
+>
+Bracelets
+</a>
+<a 
+href="#earrings"
+onClick={()=>setMobileMenuOpen(false)}
+>
+Earrings</a>
+</div>
+</div>
+</div>
+<a
+href="#about"
+onClick={()=>setMobileMenuOpen(false)}
+className="hover:text-amber-700 transition"
+>
+About
+</a>
+<a
+href="#contact"
+onClick={()=>setMobileMenuOpen(false)}
+className="hover:text-amber-700 transition"
+>
+Contact
+</a>
+</nav>
+</div>
+</>
+);
+}
 export default Navbar;
