@@ -2,7 +2,9 @@ import React from "react";
 import Checkout from "./Checkout";
 import { FiTrash2, FiShoppingBag, FiArrowRight, FiX } from "react-icons/fi";
 
-function Cart({ cartItems = [], onRemoveItem, onClose }) {
+function Cart({ cartItems = [], onRemoveItem, onClose , increaseQuantity,
+  decreaseQuantity
+}) {
    const calculateTotal = () => {
         return cartItems.reduce((total, item) => {
             return total + item.price * item.quantity;
@@ -96,9 +98,27 @@ Thank you.`; }
                     <h4 className="text-xs sm:text-sm font-medium text-stone-900 tracking-wide">
                       {item.name}
                     </h4>
-                    <p className="text-[11px] text-stone-400 font-light">
-                      Quantity: {item.quantity || 1}
-                    </p>
+                    <div className="flex items-center gap-3 mt-2">
+
+  <button
+    onClick={() => decreaseQuantity(item.id)}
+    className="w-7 h-7 rounded border border-stone-300 flex items-center justify-center hover:bg-stone-200 transition"
+  >
+    -
+  </button>
+
+  <span className="text-sm font-medium">
+    {item.quantity}
+  </span>
+
+  <button
+    onClick={() => increaseQuantity(item.id)}
+    className="w-7 h-7 rounded border border-stone-300 flex items-center justify-center hover:bg-stone-200 transition"
+  >
+    +
+  </button>
+
+</div>
                     <p className="text-xs text-amber-700 font-medium sm:hidden mt-1">
                       ₦{(item.price).toLocaleString()}
                     </p>

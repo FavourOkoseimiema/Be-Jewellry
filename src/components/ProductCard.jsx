@@ -9,8 +9,11 @@ function ProductCard({ product, onAddToCart }) {
   } = product || {};
 
   return (
-    <div className="group relative bg-zinc-950 border border-zinc-900 hover:border-amber-500/50 p-5 transition-all duration-500 flex flex-col justify-between h-full shadow-xl overflow-hidden rounded-sm">
-      
+<div
+  data-aos="zoom-in-up"
+  data-aos-duration="700"
+  className="group relative bg-zinc-950 border border-zinc-900 hover:border-amber-500/50 p-5 transition-all duration-500 flex flex-col justify-between h-full shadow-xl overflow-hidden rounded-sm"
+>      
       <div className="w-full aspect-square bg-zinc-900 overflow-hidden relative mb-4 flex items-center justify-center border border-zinc-800/50">
         <img 
           src={image} 

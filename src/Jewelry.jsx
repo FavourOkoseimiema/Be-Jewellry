@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./components/NavBar";
 import SearchBar from "./components/SearchBar";
 import ProductShowcase from "./components/ProductShowcase";
@@ -9,16 +9,25 @@ import SocialMediaLinks from "./components/SocialMedia";
 import Newsletter from "./components/NewsLetter";
 import Footer from "./components/footer";
 import MOCK_PRODUCTS from "./data/product";
+import Loader from "./loader";
+import "./index.css"
 
 function JewelryWebsite() {
   const [allProducts] = useState(MOCK_PRODUCTS);
   const [cartItems, setCartItems] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [showCart, setShowCart] = useState(false);
-  const closeCart = () => {  setShowCart(false);
+  const closeCart = () => {  setShowCart(false);};
+    const [showCart, setShowCart] = useState(false);
+    const [loading, setLoading] = useState(true);
 
-  };
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setLoading(false);
+  }, 2500); 
+
+  return () => clearTimeout(timer);
+}, []);
 
   // Filter Logic: Matches search strings and explicit dropdown category badges
   const filteredProducts = allProducts.filter((product) => {
@@ -33,43 +42,75 @@ function JewelryWebsite() {
     return matchesCategory && matchesSearch;
   });
 
-  const addToCart = (product) => {
-    // Step 1: Check if the product already exists
-    const existingItem = cartItems.find((item) => item.id === product.id);
+ // Add item to cart
+const addToCart = (product) => {
+  const existingItem = cartItems.find((item) => item.id === product.id);
 
-    if (existingItem) {
-      // Step 2: Product exists
-      // Increase its quantity
-      const updatedCart = cartItems.map((item) => {
-        if (item.id === product.id) {
+  if (existingItem) {
+    const updatedCart = cartItems.map((item) => {
+      if (item.id === product.id) {
+        return {
+          ...item,
+          quantity: item.quantity + 1,
+        };
+      }
+
+      return item;
+    });
+
+    setCartItems(updatedCart);
+  } else {
+    setCartItems([
+      ...cartItems,
+      {
+        ...product,
+        quantity: 1,
+      },
+    ]);
+  }
+};
+
+// Remove item completely
+const removeFromCart = (index) => {
+  setCartItems((prev) => prev.filter((_, i) => i !== index));
+};
+
+// Increase quantity
+const increaseQuantity = (id) => {
+  setCartItems((prev) =>
+    prev.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          quantity: item.quantity + 1,
+        };
+      }
+
+      return item;
+    })
+  );
+};
+
+// Decrease quantity
+const decreaseQuantity = (id) => {
+  setCartItems((prev) =>
+    prev
+      .map((item) => {
+        if (item.id === id) {
           return {
             ...item,
-            quantity: item.quantity + 1,
+            quantity: item.quantity - 1,
           };
         }
 
         return item;
-      });
-
-      setCartItems(updatedCart);
-    } else {
-      // Step 3: Product doesn't exist
-      // Add it with quantity = 1
-      setCartItems([
-        ...cartItems,
-        {
-          ...product,
-          quantity: 1,
-        },
-      ]);
-    }
-  };
-  const removeFromCart = (index) => {
-  setCartItems((prev) =>
-    prev.filter((_, i) => i !== index)
+      })
+      .filter((item) => item.quantity > 0)
   );
-  };
-
+};
+if (loading) {
+  return <Loader />;
+}
   ;
   return (
     <div className="min-h-screen bg-stone-950 text-stone-200 antialiased font-sans selection:bg-amber-700 selection:text-white">
@@ -117,17 +158,21 @@ showCart ? "translate-x-0" : "translate-x-full"
   cartItems={cartItems}
 onClose={() => setShowCart(false)}
     onRemoveItem={removeFromCart}
+    increaseQuantity={increaseQuantity}
+  decreaseQuantity={decreaseQuantity}
   />
   </div>
 
           {/* Engagement Modules */}
-          <div className="border-t border-stone-900/60 pt-16 max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pb-20">
+          <div data-aos="fade-right">
             <Newsletter />
-            <SocialMediaLinks />
-          </div>
+<div data-aos="fade-left"><SocialMediaLinks/></div>         
+ </div>
         </main>
 
-        <Footer id="contact" />
+      <div data-aos="fade up" id="contact">
+        <Footer />
+      </div>
       </div>
     </div>
   );

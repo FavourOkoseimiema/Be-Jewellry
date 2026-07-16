@@ -19,13 +19,14 @@ return (
 
 <>
 
-<header className="fixed top-0 left-0 w-full z-50 bg-stone-50/95 backdrop-blur-md border-b border-stone-200 scroll-mt-28">
+<header className="fixed top-0 left-0 w-full z-50 bg-stone-50/95 backdrop-blur-md border-b border-stone-200 scroll-mt-28" 
+  data-aos="fade-down"
+  data-aos-duration="900">
 
 
-{/* Announcement */}
 
 <div className="
-bg-stone-900
+bg-black-900
 text-stone-100
 text-[10px]
 tracking-[0.3em]
@@ -34,7 +35,7 @@ text-center
 py-3
 ">
 
-Free Complimentary Shipping On Orders Over ₦250,000
+Free Complimentary Shipping On watches Over ₦250,000
 
 </div>
 
@@ -258,30 +259,9 @@ onClick={()=>setMobileMenuOpen(false)}
 
 </div>
 
-
-
-
-{/* MOBILE DRAWER */}
-
 <div
-className={`
-fixed
-top-0
-right-0
-h-screen
-w-[80%]
-max-w-sm
-bg-stone-50
-z-50
-shadow-2xl
-lg:hidden
-transition-transform
-duration-500
-${mobileMenuOpen
-? "translate-x-0"
-: "translate-x-full"}
-`}
->
+className={`fixed top-0 right-0 h-screen  w-[80%] max-w-sm bg-stone-50 z-50 shadow-2xl lg:hidden
+transition-transform duration-500 ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}>
 
 
 <div className="

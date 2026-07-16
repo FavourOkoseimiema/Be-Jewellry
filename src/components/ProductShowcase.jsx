@@ -7,7 +7,8 @@ function ProductShowcase({ products = [], addToCart }) {
       <div className="max-w-7xl mx-auto">
         
         {/* 1. Luxurious Header & Subtitle */}
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-12 md:mb-16" data-aos="fade-up"
+  data-aos-duration="900">
           <h2 className="font-serif text-2xl md:text-4xl tracking-widest uppercase text-zinc-100">
             Our Collection
           </h2>
