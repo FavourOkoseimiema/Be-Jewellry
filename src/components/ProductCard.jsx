@@ -14,11 +14,11 @@ function ProductCard({ product, onAddToCart }) {
   data-aos-duration="700"
   className="group relative bg-zinc-950 border border-zinc-900 hover:border-amber-500/50 p-5 transition-all duration-500 flex flex-col justify-between h-full shadow-xl overflow-hidden rounded-sm"
 >      
-      <div className="w-full aspect-square bg-zinc-900 overflow-hidden relative mb-4 flex items-center justify-center border border-zinc-800/50">
+      <div className="w-full aspect-square bg-zinc-900 overflow-hidden relative mb-4 flex items-center justify-center border border-amber-800/50">
         <img 
           src={image} 
           alt={name} 
-          className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700 ease-out"
+          className="object-cover w-full h-full transform group-hover:scale-160 transition-transform duration-700 ease-out"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -34,7 +34,7 @@ function ProductCard({ product, onAddToCart }) {
         </p>
         
         <p className="text-amber-400 font-sans text-sm tracking-widest font-medium mt-auto mb-4">
-          {price}
+          {price.toLocaleString()}
         </p>
       </div>
 

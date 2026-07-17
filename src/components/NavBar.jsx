@@ -88,7 +88,7 @@ Home
 
 
 
-<div className="relative group">
+{/* <div className="relative group">
 
 <button
 className="
@@ -127,7 +127,7 @@ className="block py-2 hover:text-amber-700">
 Earrings
 </a>
 </div>
-</div>
+</div> */}
 <a href="#about"
 className="hover:text-amber-700 transition">
 About
@@ -138,34 +138,14 @@ Contact
 </a>
 </nav>
 {/* ICON AREA */}
-<div className="
-flex
-items-center
-gap-5
-text-stone-800
-">
-
-
-<button>
-<FiUser size={20}/>
-</button>
-
-
-
+<div className="flex items-center gap-5 text-stone-800 ">
+<button><FiUser size={20}/></button>
 <button className="relative">
-
 <FiHeart size={20}/>
 
 {
 wishlistCount > 0 &&
-<span className="
-absolute
--negative
-top-[-8px]
-right-[-8px]
-bg-amber-700
-text-white
-rounded-full
+<span className="absolute-negative top-[-8px] right-[-8px] bg-amber-700 text-white n rounded-full
 text-[9px]
 w-4
 h-4
@@ -276,15 +256,14 @@ border-stone-200
 ">
 
 
-<h2 className="
+<h1 id="home" className="
 font-serif
 tracking-widest
 uppercase
 text-stone-900
 ">
 Be-Jewelry
-</h2>
-
+</h1>
 
 <button
 onClick={()=>setMobileMenuOpen(false)}
@@ -302,39 +281,7 @@ onClick={()=>setMobileMenuOpen(false)}
 className="hover:text-amber-700 transition">
 Home
 </a>
-<div>
-<button
-onClick={()=>setShopOpen(!shopOpen)}
-className="flex items-center justify-between w-full hover:text-amber-700">
-Shop<FiChevronDown className={`transition-transform${shopOpen ? "rotate-180":""}`}/></button>
-<div
-className={`overflow-hidden transition-all duration-300 ${shopOpen ? "max-h-60 mt-4": "max-h-0"}`}>
-<div className="flex flex-col gap-4 pl-4 text-xs text-stone-500">
-<a 
-href="#rings"
-onClick={()=>setMobileMenuOpen(false)}>
-Rings
-</a>
-<a 
-href="#necklaces"
-onClick={()=>setMobileMenuOpen(false)}
->
-Necklaces
-</a>
-<a 
-href="#bracelets"
-onClick={()=>setMobileMenuOpen(false)}
->
-Bracelets
-</a>
-<a 
-href="#earrings"
-onClick={()=>setMobileMenuOpen(false)}
->
-Earrings</a>
-</div>
-</div>
-</div>
+
 <a
 href="#about"
 onClick={()=>setMobileMenuOpen(false)}

@@ -9,11 +9,11 @@ function Footer() {
         
         {/* Left Side: Brand Identity */}
         <div className="text-center md:text-left">
-          <h4 className="font-serif text-sm tracking-widest uppercase text-stone-200">
+          <h4 className="font-serif text-sm tracking-widest uppercase text-stone-200 hover:text-amber-500">
             Be-Jewelry Co.
           </h4>
           <p className="text-[10px] tracking-wider text-stone-500 mt-1 font-light">
-            Crafting timeless elegance since 2024.
+            <b>Be legant EVERYDAY</b>.
           </p>
         </div>
 

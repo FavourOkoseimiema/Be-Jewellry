@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./components/NavBar";
 import SearchBar from "./components/SearchBar";
 import ProductShowcase from "./components/ProductShowcase";
-import CategoryFilter from "./components/CategoryFilter";
+// import CategoryFilter from "./components/CategoryFilter";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
 import SocialMediaLinks from "./components/SocialMedia";
 import Newsletter from "./components/NewsLetter";
 import Footer from "./components/footer";
-import MOCK_PRODUCTS from "./data/product";
+import PRODUCTS from "./data/product";
 import Loader from "./loader";
 import "./index.css"
 
 function JewelryWebsite() {
-  const [allProducts] = useState(MOCK_PRODUCTS);
+  const [allProducts] = useState(PRODUCTS);
   const [cartItems, setCartItems] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -29,18 +29,18 @@ useEffect(() => {
   return () => clearTimeout(timer);
 }, []);
 
-  // Filter Logic: Matches search strings and explicit dropdown category badges
-  const filteredProducts = allProducts.filter((product) => {
-    const matchesCategory =
-      selectedCategory === "All" ||
-      product.category.toLowerCase() === selectedCategory.toLowerCase();
+  // // Filter Logic: Matches search strings and explicit dropdown category badges
+  // const filteredProducts = allProducts.filter((product) => {
+  //   const matchesCategory =
+  //     selectedCategory === "All" ||
+  //     product.category.toLowerCase() === selectedCategory.toLowerCase();
 
-    const matchesSearch =
-      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      product.description.toLowerCase().includes(searchQuery.toLowerCase());
+  //   const matchesSearch =
+  //     product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //     product.description.toLowerCase().includes(searchQuery.toLowerCase());
 
-    return matchesCategory && matchesSearch;
-  });
+  //   return matchesCategory && matchesSearch;
+  // });
 
  // Add item to cart
 const addToCart = (product) => {
@@ -120,11 +120,11 @@ if (loading) {
         {/* Search & Filter Toolbar Controls */}
         <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-center border-b border-stone-900/60 pb-8">
           <SearchBar onSearch={setSearchQuery} />
-          <CategoryFilter
+          {/* <CategoryFilter
             categories={["All", "Rings", "Necklaces", "Bracelets", "Earrings"]}
             selectedCategory={selectedCategory}
             onSelectCategory={setSelectedCategory}
-          />
+          /> */}
         </div>
 
         {/* Global Boutique Main Stage */}
@@ -133,21 +133,21 @@ if (loading) {
           <section id="home"
             className="h-[600px] flex flex-col items-center justify-center text-center bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: "url('/images/necklace.jpg')",
+              backgroundImage: "url('/images/Loader.jpg')",
             }}
           >
-            <span className="text-[10px] tracking-[0.3em] text-amber-500/80 uppercase font-light mb-3">
+            <h1 className="text-[10px] tracking-[0.3em] text-amber-500/80 uppercase font-light mb-3">
               Fine Artisanal Jewelry
-            </span>
+            </h1>
 
             <h2 className="font-serif text-3xl md:text-5xl tracking-widest text-stone-100 uppercase font-light">
-              Discover Timeless Elegance
+              Be Elegant . <i>Everyday</i>
             </h2>
 
             <div className="w-12 h-[1px] bg-stone-800 mt-6" />
           </section>
 
-          <ProductShowcase  products={filteredProducts} addToCart={addToCart} />
+          <ProductShowcase id="shop" products={PRODUCTS} addToCart={addToCart} />
 
           <div
   className={`fixed top-0 right-0 z-50 h-screen w-[380px] overflow-y-auto bg-stone-50 shadow-2xl transition-transform duration-500 ${

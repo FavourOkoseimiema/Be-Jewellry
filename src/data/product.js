@@ -1,43 +1,43 @@
-const MOCK_PRODUCTS = [
+const PRODUCTS = [
   {
     id: 1,
-    name: "Aura Diamond Eternity Ring",
-    description: "18k white gold band encrusted with brilliant-cut conflict-free diamonds.",
-    price: 450000,
-    image: "/images/bracelet.jpg",
-    category: "Rings"
+    name: "3 in 1 Minimalist Set",
+    // description: "18k white gold band encrusted with brilliant-cut conflict-free diamonds.",
+    price: 7000,
+    image: "/images/3in1minimalistSet.jpg",
+    // category: "Rings"
   },
   {
     id: 2,
-    name: "Monarch Gold Link Chain",
-    description: "Hand-burnished solid 24k yellow gold heavy link statement necklace.",
-    price: 890000,
-    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80",
-    category: "Necklaces"
+    name: "Chunky Bangles",
+    // description: "Hand-burnished solid 24k yellow gold heavy link statement necklace.",
+    price: 5000,
+    image: "/images/ChunkyBangles.jpg",
+    // category: "Necklaces"
   },
   {
     id: 3,
-    name: "Minimalist Heritage Bangle",
-    description: "Sleek, brushed rose gold minimalist cuff designed for everyday stack styling.",
-    price: 320000,
-    image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=600&q=80",
-    category: "Bracelets"
+    name: "Bracelet and Earrings",
+    // description: "Sleek, brushed rose gold minimalist cuff designed for everyday stack styling.",
+    price: 5000,
+    image:"/images/Bracelet&Earrings.jpg",
+    // category: "Bracelets"
   },
   {
     id: 4,
-    name: "Baroque Pearl Drop Earrings",
-    description: "Naturally formed irregular sea pearls suspended from solid gold hooks.",
+    name: "Chunky Elastic Jewelry",
+    // description: "Naturally formed irregular sea pearls suspended from solid gold hooks.",
     price: 275000,
-    image: "",
-    category: "Earrings"
+    image: "/images/ChunkyElasticJewelry.jpg",
+    // category: "Earrings"
   },
   {
     id: 5,
-    name: "Imperial Solitaire Princess Cut",
-    description: "Flawless single-source diamond mounted on a delicate platinum cathedral setting.",
+    name: "Fashion Jewelry",
+    description: "F",
     price: 1200000,
-    image: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=600&q=80",
-    category: "Rings"
+    image :"/images/FashionJewelry.jpg"
+    // category: "Rings"
   },
   {
     id: 6,
@@ -48,4 +48,4 @@ const MOCK_PRODUCTS = [
     category: "Necklaces"
   }
 ];
-export default MOCK_PRODUCTS
+export default PRODUCTS
