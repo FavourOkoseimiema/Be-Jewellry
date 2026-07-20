@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import api from "../../services/api";
 import {
   FiHeart,
   FiUser,
@@ -7,13 +8,14 @@ import {
   FiX,
   FiChevronDown
 } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 
 function Navbar({cartCount = 0, wishlistCount = 0, setShowCart}) {
 
 const [mobileMenuOpen,setMobileMenuOpen] = useState(false);
 const [shopOpen,setShopOpen] = useState(false);
-
+const navigate = useNavigate();
 
 return (
 
@@ -139,7 +141,7 @@ Contact
 </nav>
 {/* ICON AREA */}
 <div className="flex items-center gap-5 text-stone-800 ">
-<button><FiUser size={20}/></button>
+<button onClick={() => navigate("/admin/login")}><FiUser size={20}/></button>
 <button className="relative">
 <FiHeart size={20}/>
 
