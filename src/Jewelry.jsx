@@ -11,9 +11,10 @@ import Footer from "./components/footer";
 import PRODUCTS from "./data/product";
 import Loader from "./loader";
 import "./index.css"
+import api from "../services/api";
 
 function JewelryWebsite() {
-  const [allProducts] = useState(PRODUCTS);
+  const [products,setProducts] = useState(PRODUCTS);
   const [cartItems, setCartItems] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");

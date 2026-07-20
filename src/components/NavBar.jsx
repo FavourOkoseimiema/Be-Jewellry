@@ -88,8 +88,6 @@ className="hover:text-amber-700 transition">
 Home
 </a>
 
-
-
 {/* <div className="relative group">
 
 <button

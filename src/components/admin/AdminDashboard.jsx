@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Sidebar from "./Sidebar";
 import DashboardCards from "./DashboardCards";
 import AddProductForm from "./AddproductForm";
@@ -6,24 +7,36 @@ import OrderTable from "./OrderTable";
 import SubscriberTable from "./Subscribertable";
 
 function AdminDashboard() {
+  const [activePage, setActivePage] = useState("dashboard");
   return (
-    <div className="flex min-h-screen bg-stone-950 text-stone-200">
+    <main>
+    <div className=" min-h-screen bg-stone-950 text-stone-200">
       {/* Sidebar */}
-      <Sidebar />
+      <Sidebar
+      activePage={activePage}
+      setActivePage={setActivePage} />
 
       {/* Main Content */}
-      <main className="flex-1 p-8 space-y-8">
-        <DashboardCards />
+      {activePage === "dashboard" && (
+  <DashboardCards />
+)}
 
-        <AddProductForm />
+{activePage === "products" && (
+  <>
+    <AddProductForm />
+    <ProductTable />
+  </>
+)}
 
-        <ProductTable />
+{activePage === "orders" && (
+  <OrderTable />
+)}
 
-        <OrderTable />
-
-        <SubscriberTable />
-      </main>
+{activePage === "subscribers" && (
+  <SubscriberTable />
+)}
     </div>
+    </main>
   );
 }
 
