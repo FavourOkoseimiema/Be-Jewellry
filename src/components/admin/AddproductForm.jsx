@@ -6,6 +6,7 @@ function AddProductForm() {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
+  const [featured, setFeatured] = useState(false);
   const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -16,6 +17,7 @@ function AddProductForm() {
     formData.append("description", description);
     formData.append("price", price);
     formData.append("image", image);
+    formData.append("featured", featured);
 
     const response = await api.post(
       "/products",
@@ -33,6 +35,7 @@ function AddProductForm() {
     setDescription("");
     setPrice("");
     setImage(null);
+    setFeatured(false);
 
   } catch (error) {
     console.error(error);
@@ -106,7 +109,20 @@ function AddProductForm() {
             className="w-full"
           />
         </div>
+<div className="flex items-center gap-3">
 
+  <input
+    type="checkbox"
+    checked={featured}
+    onChange={(e) => setFeatured(e.target.checked)}
+    className="w-5 h-5 accent-amber-500"
+  />
+
+  <label className="text-sm">
+    Feature this product
+  </label>
+
+</div>
         <button 
           type="submit"
           className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-6 py-3 rounded transition"

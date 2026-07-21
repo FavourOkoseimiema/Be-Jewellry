@@ -5,14 +5,15 @@ import AddProductForm from "./AddproductForm";
 import ProductTable from "./ProductTable";
 import OrderTable from "./OrderTable";
 import SubscriberTable from "./Subscribertable";
+import { FiArrowLeftCircle } from "react-icons/fi";
 
 function AdminDashboard() {
   const [activePage, setActivePage] = useState("dashboard");
   return (
     <main>
-    <div className=" min-h-screen bg-stone-950 text-stone-200">
-      {/* Sidebar */}
-      <Sidebar
+    <div  className=" min-h-screen bg-stone-950 text-stone-200">
+      {/* Sidebar */} 
+      <Sidebar 
       activePage={activePage}
       setActivePage={setActivePage} />
 

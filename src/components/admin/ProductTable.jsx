@@ -44,14 +44,34 @@ const handleDelete = async (id) => {
   }
 };
 const handleUpdate = async (updatedProduct) => {
-
   try {
+    const formData = new FormData();
+
+    formData.append("name", updatedProduct.name);
+    formData.append("description", updatedProduct.description);
+    formData.append("price", updatedProduct.price);
+    formData.append(
+      "featured",
+      updatedProduct.featured
+    );
+
+    // Only add image if admin selected a new one
+    if (updatedProduct.image) {
+      formData.append(
+        "image",
+        updatedProduct.image
+      );
+    }
 
     const response = await api.put(
       `/products/${updatedProduct._id}`,
-      updatedProduct
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
     );
-
 
     setProducts(
       products.map((product) =>
@@ -61,18 +81,18 @@ const handleUpdate = async (updatedProduct) => {
       )
     );
 
+    setSelectedProduct(null);
 
     alert("Product updated successfully");
 
-
   } catch (error) {
-
     console.error(error);
 
-    alert("Failed to update product");
-
+    alert(
+      error.response?.data?.message ||
+      "Failed to update product"
+    );
   }
-
 };
   return (
     <section className="bg-stone-900 rounded-lg p-6 shadow-lg mt-8">

@@ -12,6 +12,7 @@ import Footer from "./components/footer";
 import Loader from "./loader";
 import "./index.css"
 import api from "../services/api";
+import BestSellers from "./components/BestSellers";
 
 function JewelryWebsite() {
   const [products,setProducts] = useState([]);
@@ -147,8 +148,8 @@ if (loading) {
         {/* Global Boutique Main Stage */}
         <main className="space-y-4">
           {/* Aesthetic Intro Minimal Header */}
-          <section id="home"
-            className="h-[600px] flex flex-col items-center justify-center text-center bg-cover bg-center bg-no-repeat"
+          <section
+            className="h-[600px] w-full flex flex-col items-center justify-center text-center bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage: "url('/images/Loader.jpg')",
             }}
@@ -163,7 +164,7 @@ if (loading) {
 
             <div className="w-12 h-[1px] bg-stone-800 mt-6" />
           </section>
-
+          <BestSellers product={products}/>
           <ProductShowcase id="shop" products={products} addToCart={addToCart} />
 
           <div

@@ -5,6 +5,8 @@ function EditProductModal({ product, closeModal, updateProduct }) {
   const [name, setName] = useState(product.name);
   const [description, setDescription] = useState(product.description);
   const [price, setPrice] = useState(product.price);
+  const [featured, setFeatured] = useState(product.featured);
+  const [image,setImage] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,7 +15,9 @@ function EditProductModal({ product, closeModal, updateProduct }) {
       ...product,
       name,
       description,
-      price
+      price,
+      image,
+      featured
     });
 
     closeModal();
@@ -55,8 +59,25 @@ function EditProductModal({ product, closeModal, updateProduct }) {
             onChange={(e)=>setPrice(e.target.value)}
             className="w-full p-3 bg-stone-800 rounded"
           />
+            <div className="flex items-center gap-3">
 
+  <input
+    type="checkbox"
+    checked={featured}
+    onChange={(e) => setFeatured(e.target.checked)}
+    className="w-5 h-5 accent-amber-500"
+  />
 
+  <label className="text-sm">
+    Feature this product
+  </label>
+
+</div>
+          <input type="file"
+          accept="image/*" 
+          onChange={(e) => setImage(e.target.files[0])}
+        
+          />
           <div className="flex gap-3">
 
             <button
