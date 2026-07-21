@@ -5,12 +5,12 @@ function SocialMediaLinks() {
   const socials = [
     { 
       name: "Facebook", 
-      url: "https://facebook.com/Blessing Ajah", 
+      url: "https://facebook.com/share/1HkCoXTobf/?mibextid=wwXlfr", 
       icon: <FaFacebookF className="w-4 h-4" /> 
     },
     { 
       name: "Instagram", 
-      url: "https://instagram.com/glammybee8", 
+      url: "https://instagram.com/glambybee8", 
       icon: <FaInstagram className="w-4.5 h-4.5" /> 
     },
     { 

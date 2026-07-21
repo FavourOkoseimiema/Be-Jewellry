@@ -1,41 +1,22 @@
 import React, { useState } from "react";
 import api from "../../services/api";
 import {
-  FiHeart,
-  FiUser,
-  FiShoppingBag,
-  FiMenu,
-  FiX,
-  FiChevronDown
+  FiHeart,FiUser,FiShoppingBag,FiMenu,FiX,FiChevronDown
 } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 
-
 function Navbar({cartCount = 0, wishlistCount = 0, setShowCart}) {
-
 const [mobileMenuOpen,setMobileMenuOpen] = useState(false);
 const [shopOpen,setShopOpen] = useState(false);
 const navigate = useNavigate();
 
 return (
-
 <>
-
 <header className="fixed top-0 left-0 w-full z-50 bg-stone-50/95 backdrop-blur-md border-b border-stone-200 scroll-mt-28" 
   data-aos="fade-down"
   data-aos-duration="900">
-
-
-
-<div className="
-bg-black-900
-text-stone-100
-text-[10px]
-tracking-[0.3em]
-uppercase
-text-center
-py-3
-">
+<div className="bg-black-900 text-stone-100 text-[10px] tracking-[0.3em] uppercase text-center
+py-2">
 
 Free Complimentary Shipping On watches Over ₦250,000
 
@@ -160,10 +141,6 @@ justify-center
 }
 
 </button>
-
-
-
-
 <button
 onClick={()=>setShowCart(true)}
 className="relative"

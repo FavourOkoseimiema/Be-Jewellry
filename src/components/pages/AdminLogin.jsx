@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../../services/api";
-
+import { FiArrowLeftCircle } from "react-icons/fi";
 function AdminLogin() {
   const navigate = useNavigate();
 
@@ -45,10 +45,11 @@ function AdminLogin() {
         onSubmit={handleLogin}
         className="bg-stone-900 p-8 rounded-lg w-[400px] shadow-xl"
       >
-
-        <h1 className="text-3xl text-amber-500 font-serif mb-8 text-center">
+          <div>
+          <button onClick={() => navigate("/")} className="text-amber-500   "><FiArrowLeftCircle/></button>
+            <h1 className="text-3xl text-amber-500 font-serif mb-8 text-center">
           Admin Login
-        </h1>
+        </h1></div>
 
         <input
           type="email"
