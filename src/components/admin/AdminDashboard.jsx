@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Sidebar from "./Sidebar";
-import DashboardCards from "./DashboardCards";
+import DashboardCards from "./DashBoardCards";
 import AddProductForm from "./AddproductForm";
 import ProductTable from "./ProductTable";
 import OrderTable from "./OrderTable";
