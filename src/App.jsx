@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import JewelryWebsite from "./Jewelry";
-import AdminLogin from "./components/pages/AdminLogin";
+import AdminLogin from "./components/admin/AdminLogin";
 import AdminDashboard from "./components/admin/AdminDashboard";
 
 function App() {
