@@ -1,4 +1,7 @@
-import React from "react";
+import React, { use } from "react";
+import { useAuth } from "../Context/AuthContext";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 function ProductCard({ product, onAddToCart }) {
   const { 
@@ -7,6 +10,24 @@ function ProductCard({ product, onAddToCart }) {
     price = "$0.00", 
     image = "https://via.placeholder.com/300" 
   } = product || {};
+  const navigate = useNavigate();
+  const {isAuthenticated} = useAuth();
+
+  const handleAddToCart = ()=> {
+    console.log("BUTTON CLICKED");
+  console.log("isAuthenticated:", isAuthenticated);
+
+    if (!isAuthenticated) {
+      console.log("user is not logged in")
+      toast.error("Please log in to Add items to cart");
+      navigate("/login");
+      return;
+    }
+    console.log("user is logged in")
+    if (onAddToCart) {
+      onAddToCart(product);
+    };
+  }
 
   return (
 <div
@@ -39,7 +60,7 @@ function ProductCard({ product, onAddToCart }) {
       </div>
 
       <button 
-        onClick={() => onAddToCart && onAddToCart(product)}
+        onClick={handleAddToCart}
         className="w-full border border-amber-500/80 text-amber-400 hover:bg-amber-500 hover:text-black text-[10px] tracking-widest uppercase font-light py-2.5 px-4 transition-all duration-300 ease-in-out focus:outline-none focus:ring-1 focus:ring-amber-500"
       >
         Add to Cart
