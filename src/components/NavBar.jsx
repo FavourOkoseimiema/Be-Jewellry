@@ -3,22 +3,47 @@ import api from "../../services/api";
 import {
   FiHeart,FiUser,FiShoppingBag,FiMenu,FiX,FiChevronDown
 } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link} from "react-router-dom";
+import { useAuth } from "../Context/AuthContext";
+import toast from "react-hot-toast";
 
 function Navbar({cartCount = 0, wishlistCount = 0, setShowCart}) {
 const [mobileMenuOpen,setMobileMenuOpen] = useState(false);
 const [shopOpen,setShopOpen] = useState(false);
 const navigate = useNavigate();
+const {user, isAuthenticated, logout}= useAuth();
+
+const handleLogout =()=>{
+  logout();
+  navigate("/");
+  toast.success("You have beenn logged out successfully")
+}
 
 return (
 <>
-<header className="fixed top-0 left-0 w-full z-50 bg-stone-50/95 backdrop-blur-md border-b border-stone-200 scroll-mt-28" 
-  data-aos="fade-down"
-  data-aos-duration="900">
-<div className="bg-black-900 text-stone-100 text-[10px] tracking-[0.3em] uppercase text-center
-py-2">
+<header className="fixed top-0 left-0 w-full z-50 bg-stone-50/95 backdrop-blur-md border-b border-stone-200 scroll-mt-28">
+<div className="bg-black text-white-100 text-[10px] tracking-[0.3em]  uppercase text-center py-2 flex items-center justify-center gap-4">
+{isAuthenticated ? (
+  <>
+    <span>
+      Hi, {user.name}
+    </span>
 
-Free Complimentary Shipping On watches Over ₦250,000
+    <button onClick={handleLogout} className="text-amber-400 hover:text-amber-300 transitions-colors">
+      Logout
+    </button>
+  </>
+) : (
+  <>
+    <Link to="/login" className="hover:text-amber-500 transition-colors">
+      Login
+    </Link>
+
+    <Link to="/register" className="hover:text-amber-500 transition-colors">
+      Register
+    </Link>
+  </>
+)}
 
 </div>
 
