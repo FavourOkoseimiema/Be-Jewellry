@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import toast from "react-hot-toast";
-import api from "../../services/api";
-import { useAuth } from "../context/AuthContext.jsx";
+import api from "../../../services/api";
+import { useAuth } from "../../Context/AuthContext";
 
 function Login() {
   const navigate = useNavigate();

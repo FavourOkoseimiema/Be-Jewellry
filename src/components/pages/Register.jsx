@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { Loader2 } from "lucide-react";
 import api from "../../../services/api";
-import { useAuth } from "../context/AuthContext.jsx";
+import { useAuth } from "../../Context/AuthContext";
 
 function Register() {
   const navigate = useNavigate();
@@ -65,12 +65,15 @@ function Register() {
       navigate("/");
 
     } catch (error) {
-      console.error("Registration error:", error);
+  console.error(
+    "Registration error:",
+    error.response?.data || error
+  );
 
-      toast.error(
-        error.response?.data?.message ||
-        "Unable to create your account."
-      );
+  toast.error(
+    error.response?.data?.message ||
+    "Unable to create account."
+  );
 
     } finally {
       setIsLoading(false);
