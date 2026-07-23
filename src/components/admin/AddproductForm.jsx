@@ -1,5 +1,6 @@
 import { useState } from "react";
 import api from "../../../services/api";
+import toast from "react-hot-toast";
 
 function AddProductForm() {
   const [name, setName] = useState("");
@@ -7,10 +8,12 @@ function AddProductForm() {
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
   const [featured, setFeatured] = useState(false);
+  const [isAdding, setIsAdding] = useState(false);
   const handleSubmit = async (e) => {
   e.preventDefault();
 
   try {
+    setIsAdding(true);
     const formData = new FormData();
 
     formData.append("name", name);
@@ -29,7 +32,7 @@ function AddProductForm() {
       }
     );
 
-    alert(response.data.message);
+   toast.success(response.data.message)
 
     setName("");
     setDescription("");
@@ -40,10 +43,13 @@ function AddProductForm() {
   } catch (error) {
     console.error(error);
 
-    alert(
-      error.response?.data?.message ||
-      "Failed to add product."
-    );
+   toast.error(
+  error.response?.data?.message ||
+  "Failed to add product."
+);
+  }
+  finally{
+    setIsAdding(false);
   }
 };
 
@@ -125,10 +131,12 @@ function AddProductForm() {
 </div>
         <button 
           type="submit"
-          className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-6 py-3 rounded transition"
+          disabled={isAdding}
+          className={`bg-amber-500 hover:bg-amber-600 text-black font-semibold px-6 py-3 rounded transition ${isAdding
+      ? "opacity-60 cursor-not-allowed"
+      : ""}`}
         >
-          Add Product
-        </button>
+  {isAdding ? "Adding Product..." : "Add Product"}        </button>
 
       </form>
     </section>

@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://be-jewellry-backend.onrender.com/api",
-});
+baseURL: "https://be-jewellry-backend.onrender.com/api"});
 
 // Automatically attach JWT token
 api.interceptors.request.use((config) => {

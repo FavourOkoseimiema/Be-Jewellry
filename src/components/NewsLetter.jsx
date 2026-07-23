@@ -47,7 +47,7 @@ function Newsletter() {
             placeholder="ENTER YOUR EMAIL"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="flex-grow bg-stone-900/40 border border-stone-800 focus:border-amber-500/80 outline-none text-xs tracking-widest uppercase p-3 text-stone-200 transition-colors placeholder-stone-600 rounded-sm font-light min-w-[240px]"
+            className="flex-grow bg-stone-900/40 border border-stone-800 focus:border-amber-500/80 outline-none text-xs tracking-widest p-3 text-stone-200 transition-colors placeholder-stone-600 rounded-sm font-light min-w-[240px] normal-case"
           />
           
           {/* Submit Action Button */}

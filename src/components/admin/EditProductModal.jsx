@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import toast from "react-hot-toast";
 function EditProductModal({ product, closeModal, updateProduct }) {
 
   const [name, setName] = useState(product.name);

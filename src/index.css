@@ -27,7 +27,7 @@
 }
 
 @theme {
-  --animate-slide: slide 20s linear infinite;
+  --animate-slide: slide 10s linear infinite;
 }
 
 @keyframes slide {

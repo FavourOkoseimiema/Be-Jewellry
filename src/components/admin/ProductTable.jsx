@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import api from "../../../services/api";
 import EditProductModal from "./EditProductModal";
+import toast from "react-hot-toast";
+import { Loader2 } from "lucide-react";
 
 function ProductTable() {
 
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [deletingId, setDeletingId] = useState(null);
+const [isUpdating, setIsUpdating] = useState(false);
   useEffect(() => {
   fetchProducts();
 }, []);
@@ -29,22 +33,28 @@ const handleDelete = async (id) => {
   if (!confirmDelete) return;
 
   try {
+    setDeletingId(id);
+
     await api.delete(`/products/${id}`);
 
     setProducts(
       products.filter((product) => product._id !== id)
     );
 
-    alert("Product deleted successfully");
+    toast.success("Product deleted successfully");
 
   } catch (error) {
     console.error(error);
 
-    alert("Failed to delete product");
+    toast.error("Failed to delete product");
+
+  } finally {
+    setDeletingId(null);
   }
 };
 const handleUpdate = async (updatedProduct) => {
   try {
+    setIsUpdating(true);
     const formData = new FormData();
 
     formData.append("name", updatedProduct.name);
@@ -83,16 +93,18 @@ const handleUpdate = async (updatedProduct) => {
 
     setSelectedProduct(null);
 
-    alert("Product updated successfully");
-
+toast.success("Product updated successfully");
   } catch (error) {
     console.error(error);
 
-    alert(
-      error.response?.data?.message ||
-      "Failed to update product"
-    );
+    toast.error(
+  error.response?.data?.message ||
+  "Failed to update product"
+);
   }
+  finally {
+  setIsUpdating(false);
+}
 };
   return (
     <section className="bg-stone-900 rounded-lg p-6 shadow-lg mt-8">
@@ -142,9 +154,20 @@ const handleUpdate = async (updatedProduct) => {
               Edit
             </button>
 
-            <button onClick={() => handleDelete(product._id)} className="bg-red-600 px-3 py-1 rounded text-sm">
-              Delete
-            </button>
+            <button
+  onClick={() => handleDelete(product._id)}
+  disabled={deletingId === product._id}
+  className="bg-red-600 px-3 py-1 rounded text-sm flex items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+>
+  {deletingId === product._id ? (
+    <>
+      <Loader2 className="w-4 h-4 animate-spin" />
+      Deleting...
+    </>
+  ) : (
+    "Delete"
+  )}
+</button>
 
           </td>
 
@@ -192,9 +215,20 @@ const handleUpdate = async (updatedProduct) => {
           Edit
         </button>
 
-        <button onClick={() => handleDelete(product._id)} className="flex-1 bg-red-600 py-2 rounded">
-          Delete
-        </button>
+      <button
+  onClick={() => handleDelete(product._id)}
+  disabled={deletingId === product._id}
+  className="flex-1 bg-red-600 py-2 rounded flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+>
+  {deletingId === product._id ? (
+    <>
+      <Loader2 className="w-4 h-4 animate-spin" />
+      Deleting...
+    </>
+  ) : (
+    "Delete"
+  )}
+</button>
 
       </div>
 
@@ -209,6 +243,7 @@ const handleUpdate = async (updatedProduct) => {
     product={selectedProduct}
     closeModal={() => setSelectedProduct(null)}
     updateProduct={handleUpdate}
+    isUpdating={isUpdating}
   />
 )}
     </section>
