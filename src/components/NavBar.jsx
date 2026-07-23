@@ -22,7 +22,7 @@ const handleLogout =()=>{
 return (
 <>
 <header className="fixed top-0 left-0 w-full z-50 bg-stone-50/95 backdrop-blur-md border-b border-stone-200 scroll-mt-28">
-<div className="bg-black text-white-100 text-[20px] tracking-[0.3em]  uppercase text-center py-2 flex items-center justify-center gap-8">
+<div className="bg-black text-white-100 text-[20px] tracking-[0.3em]  uppercase text-center py-5 flex item-center justify-between gap-8">
 {isAuthenticated ? (
   <>
     <span>
@@ -38,7 +38,7 @@ return (
     <Link to="/login" className="hover:text-amber-500 transition-colors">
       Login
     </Link>
-        /
+        
     <Link to="/register" className="hover:text-amber-500 transition-colors">
       Register
     </Link>
