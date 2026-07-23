@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@theme {
+  --animate-slide: slide 10s linear infinite;
+};
 
 @keyframes loaderAnimation {
   0% {
@@ -24,10 +27,6 @@
 
 .animate-loader {
   animation: loaderAnimation 2.5s ease-in-out forwards;
-}
-
-@theme {
-  --animate-slide: slide 10s linear infinite;
 }
 
 @keyframes slide {

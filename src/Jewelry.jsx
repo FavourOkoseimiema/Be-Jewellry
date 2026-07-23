@@ -131,7 +131,7 @@ if (loading) {
 }
   ;
   return (
-    <div className="min-h-screen bg-stone-950 text-stone-200 antialiased font-sans selection:bg-amber-700 selection:text-white">
+    <div className="min-h-screen bg-black-950 text-stone-200 antialiased font-sans selection:bg-amber-700 selection:text-white">
       {/* Navigation Layer */}
       <Navbar cartCount={cartItems.length} setShowCart={setShowCart} />
       <div className="pt-28 bg-stone-950">
@@ -149,7 +149,7 @@ if (loading) {
         <main className="space-y-4">
           {/* Aesthetic Intro Minimal Header */}
           <section
-            className="h-[600px] w-full flex flex-col items-center justify-center text-center bg-cover bg-center bg-no-repeat"
+            className="h-[600px] w-full flex flex-col items-center justify-center text-center bg-contain bg-center bg-no-repeat"
             style={{
               backgroundImage: "url('/images/Loader.jpg')",
             }}
