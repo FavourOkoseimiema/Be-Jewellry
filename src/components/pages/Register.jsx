@@ -13,6 +13,7 @@ function Register() {
     email: "",
     password: "",
     confirmPassword: "",
+    role : "",
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -37,7 +38,7 @@ function Register() {
     } = formData;
 
     // Check all fields
-    if (!name || !email || !password || !confirmPassword) {
+    if (!name || !email || !password || !confirmPassword || !role) {
       toast.error("Please fill in all fields.");
       return;
     }
@@ -55,10 +56,11 @@ function Register() {
         name,
         email,
         password,
+        role
       });
-      const { token, user } = response.data;
+      const { token, user , role} = response.data;
       
-      login(token,user);
+      login(token,user,role);
       toast.success("Account created successfully!");
 
       // Go to login after successful registration
@@ -183,7 +185,23 @@ function Register() {
 
           </div>
 
-
+          <div className="flex flex-col gap-1.5 w-full max-w-xs">
+  <label htmlFor="role" className="text-sm font-medium text-gray-700">
+    Sign up as:
+  </label>
+  <select 
+    id="role"
+    name="role" 
+    value={formData.role} 
+    onChange={handleChange}
+    required
+    className="w-full px-3.5 py-2.5 text-sm text-gray-900 bg-white border border-gray-300 rounded-lg shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-gray-400 transition-colors duration-150"
+  >
+    <option value="" disabled>-- Choose a Role --</option>
+    <option value="buyer">Buyer</option>
+    <option value="seller">Seller</option>
+  </select>
+</div>
           {/* Submit */}
 
           <button

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../../services/api";
 import { FiArrowLeftCircle } from "react-icons/fi";
+import toast from "react-hot-toast";
 function AdminLogin() {
   const navigate = useNavigate();
 
@@ -29,10 +30,9 @@ function AdminLogin() {
       );
 
       navigate("/admin/dashboard");
-    } catch (error) {
-      alert(
-        error.response?.data?.message || "Login failed."
-      );
+    } catch (error) {() => {
+      toast.error("Invalid email or password")
+    navigate("/")}
     } finally {
       setLoading(false);
     }
