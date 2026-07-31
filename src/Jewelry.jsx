@@ -6,7 +6,7 @@ import ProductShowcase from "./components/ProductShowcase";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
 import SocialMediaLinks from "./components/SocialMedia";
-import Newsletter from "./components/NewsLetter";
+// import Newsletter from "./components/NewsLetter";
 import Footer from "./components/footer";
 // import PRODUCTS from "./data/product";
 import Loader from "./loader";
@@ -183,7 +183,7 @@ onClose={() => setShowCart(false)}
 
           {/* Engagement Modules */}
           <div data-aos="fade-right">
-            <Newsletter />
+            {/* <Newsletter /> */}
 <div data-aos="fade-left"><SocialMediaLinks/></div>         
  </div>
         </main>

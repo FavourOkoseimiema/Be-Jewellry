@@ -1,9 +1,9 @@
-import React, { use } from "react";
+import React from "react";
 import { useAuth } from "../Context/AuthContext";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-function ProductCard({ product, onAddToCart }) {
+function ProductCard({ product, onAddToCart, onProductSelect }) {
   const { 
     name = "Fine Jewelry Piece", 
     description = "Excellence crafted in 18k gold.", 
@@ -31,9 +31,11 @@ function ProductCard({ product, onAddToCart }) {
 
   return (
 <div
+    onClick={() =>onProductSelect && onProductSelect(product)}
+
   data-aos="zoom-in-up"
   data-aos-duration="700"
-  className="group relative bg-zinc-950 border border-zinc-900 hover:border-amber-500/50 p-5 transition-all duration-500 flex flex-col justify-between h-full shadow-xl overflow-hidden rounded-sm"
+  className="group relative cursor-pointer bg-zinc-950 border border-zinc-900 hover:border-amber-500/50 p-5 transition-all duration-500 flex flex-col justify-between h-full shadow-xl overflow-hidden rounded-sm"
 >      
       <div className="w-full aspect-square bg-zinc-900 overflow-hidden relative mb-4 flex items-center justify-center border border-amber-800/50">
         <img 
@@ -60,8 +62,10 @@ function ProductCard({ product, onAddToCart }) {
       </div>
 
       <button 
-        onClick={handleAddToCart}
-        className="w-full border border-amber-500/80 text-amber-400 hover:bg-amber-500 hover:text-black text-[10px] tracking-widest uppercase font-light py-2.5 px-4 transition-all duration-300 ease-in-out focus:outline-none focus:ring-1 focus:ring-amber-500"
+  onClick={(e) => {
+    e.stopPropagation();
+    handleAddToCart();
+  }}        className="w-full border border-amber-500/80 text-amber-400 hover:bg-amber-500 hover:text-black text-[10px] tracking-widest uppercase font-light py-2.5 px-4 transition-all duration-300 ease-in-out focus:outline-none focus:ring-1 focus:ring-amber-500"
       >
         Add to Cart
       </button>

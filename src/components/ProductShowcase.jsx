@@ -1,10 +1,14 @@
 import React from "react";
-import ProductCard from "./ProductCard";
+import ProductCard from "./ProductCard"; 
+import ProductDetails from "./ProductDetails";
+import { useState } from "react";
 
 function ProductShowcase({ products = [], addToCart }) {
+  const [selectedProduct, setSelectedProduct] = useState(null);
   return (
     <section className="bg-black min-h-screen py-16 px-4 sm:px-6 lg:px-8 border-t border-zinc-900">
       <div className="max-w-7xl mx-auto">
+        <div className="relative overflow-hidden">
         
         {/* 1. Luxurious Header & Subtitle */}
         <div className="text-center mb-12 md:mb-16" data-aos="fade-up"
@@ -20,6 +24,7 @@ function ProductShowcase({ products = [], addToCart }) {
             Exquisite design meets timeless craftsmanship
           </p>
         </div>
+        </div>
 
         {/* 2. Seamless Responsive Product Grid */}
         {products.length === 0 ? (
@@ -27,15 +32,64 @@ function ProductShowcase({ products = [], addToCart }) {
             Curating the collection...
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+          <div className="relative min-h-[700px]">
+
+    {/* PRODUCT GRID */}
+
+    <div
+        className={`
+            transition-all duration-700 ease-in-out
+            ${
+                selectedProduct
+                    ? "-translate-x-52 opacity-40 pointer-events-non"
+                    : "translate-x-0 opacity-100"
+            }
+        `}
+    >
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+
             {products.map((product) => (
-              <ProductCard 
-                key={product._id} 
-                product={product} 
-                onAddToCart={addToCart} 
-              />
+
+                <ProductCard
+                    key={product._id}
+                    product={product}
+                    onAddToCart={addToCart}
+                    onProductSelect={setSelectedProduct}
+                />
+
             ))}
-          </div>
+
+        </div>
+        {selectedProduct && (
+
+<div
+    className="absolute inset-0 bg-black/60 backdrop-blur-sm z-20"
+/>
+
+)}
+
+    </div>
+
+    {/* DETAILS PANEL */}
+
+    <div
+className={`absolute top-0 right-0 z-30 transition-all duration-700 ease-in-out
+${selectedProduct?"translate-x-0":"translate-x-full"}`}   >
+
+        {selectedProduct && (
+
+            <ProductDetails
+                product={selectedProduct}
+                onAddToCart={addToCart}
+                onClose={() => setSelectedProduct(null)}
+            />
+
+        )}
+
+    </div>
+
+</div>
         )}
         
       </div>
