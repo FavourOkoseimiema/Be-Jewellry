@@ -3,7 +3,7 @@ function ProductDetails({ product, onAddToCart, onClose }) {
 
   return (
     
-    <div className="sticky top-28 bg-zinc-950 border border-zinc-800 rounded-sm p-6">
+    <div className="min-h-screen top-28 bg-zinc-950 border border-zinc-800 rounded-sm p-6">
      <div className="flex justify-end">
 
 <button
@@ -19,7 +19,7 @@ className="text-zinc-500 hover:text-white text-2xl transition"
       <img
         src={product.image}
         alt={product.name}
-        className="w-full h-96 object-cover rounded-sm"
+        className="w-full h-[320px] lg:h-[420px] object-cover rounded-sm"
       />
 
       <h2 className="mt-6 text-2xl font-serif text-white tracking-wide">
