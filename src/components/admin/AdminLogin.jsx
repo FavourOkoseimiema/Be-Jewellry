@@ -72,7 +72,12 @@ function AdminLogin() {
         >
           {loading ? "Logging in..." : "Login"}
         </button>
-
+<Link
+    to="/forgot-password"
+    className="text-sm text-amber-500 hover:underline"
+>
+    Forgot Password?
+</Link>
       </form>
 
     </div>

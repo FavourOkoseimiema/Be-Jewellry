@@ -154,6 +154,14 @@ function Login() {
             )}
 
           </button>
+          <div className="text-right mt-3">
+  <Link
+    to="/forgot-password"
+    className="text-sm text-amber-500 hover:underline"
+  >
+    Forgot Password?
+  </Link>
+</div>
 
         </form>
 

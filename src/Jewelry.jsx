@@ -13,6 +13,7 @@ import Loader from "./loader";
 import "./index.css"
 import api from "../services/api";
 import BestSellers from "./components/BestSellers";
+// import ResetPassword from "./components/pages/ResetPassword";
 
 function JewelryWebsite() {
   const [products,setProducts] = useState([]);
