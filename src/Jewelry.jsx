@@ -13,7 +13,8 @@ import Loader from "./loader";
 import "./index.css"
 import api from "../services/api";
 import BestSellers from "./components/BestSellers";
-// import ResetPassword from "./components/pages/ResetPassword";
+import ResetPassword from "./components/pages/ResetPassword";
+import ForgotPassword from "./components/pages/ForgotPassword";
 
 function JewelryWebsite() {
   const [products,setProducts] = useState([]);
@@ -23,7 +24,7 @@ function JewelryWebsite() {
   const closeCart = () => {  setShowCart(false);};
     const [showCart, setShowCart] = useState(false);
     const [loading, setLoading] = useState(true);
-
+   const [showCheckout, setShowCheckout]=  useState(false);
 useEffect(() => {
   const timer = setTimeout(() => {
     setLoading(false);
@@ -173,13 +174,15 @@ if (loading) {
 showCart ? "translate-x-0" : "translate-x-full"
   }`}
   >
-<Cart
+    {showCheckout ? (<Checkout cartItems={cartItems}  onClose={() => setShowCheckout(false)} />):(<Cart
   cartItems={cartItems}
 onClose={() => setShowCart(false)}
     onRemoveItem={removeFromCart}
     increaseQuantity={increaseQuantity}
   decreaseQuantity={decreaseQuantity}
-  />
+  onCheckout ={() => setShowCheckout (true)}
+  />)}
+  
   </div>
 
           {/* Engagement Modules */}

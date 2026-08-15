@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Checkout from "./Checkout";
 import { FiTrash2, FiShoppingBag, FiArrowRight, FiX } from "react-icons/fi";
 
 function Cart({ cartItems = [], onRemoveItem, onClose , increaseQuantity,
-  decreaseQuantity
+  decreaseQuantity, onCheckout
 }) {
+  const [showCheckout, setShowCheckout] = useState(false);
    const calculateTotal = () => {
         return cartItems.reduce((total, item) => {
             return total + item.price * item.quantity;
@@ -43,9 +44,11 @@ Thank you.`; }
   const shippingCost = subtotal >= shippingThreshold || subtotal === 0 ? 0 : 5000;
   const grandTotal = subtotal + shippingCost;
   return (
+
     <div className="w-full max-w-3xl mx-auto px-4 py-12 bg-stone-50 min-h-[60vh]">
       <div className="flex justify-between items-center border-b border-stone-200 pb-4 mb-8">
 
+    {showCheckout && (<Checkout cartItems={cartItems}/>)}
   <h2 className="text-2xl font-serif tracking-widest text-stone-900 uppercase">
     Your Shopping Bag
   </h2>
@@ -177,8 +180,8 @@ Thank you.`; }
             </div>
 
             {/* Premium Interactive CTA Button */}
-            <button onClick={handleWhatsAppOrder} className="w-full mt-6 bg-stone-900 hover:bg-amber-700 text-stone-50 text-[11px] uppercase tracking-widest font-light py-4 rounded-sm transition-all duration-300 shadow-md flex items-center justify-center gap-2 group active:scale-[0.99]">
-              🟢 Order via WhatsApp
+            <button onClick={onCheckout} className="w-full mt-6 bg-stone-900 hover:bg-amber-700 text-stone-50 text-[11px] uppercase tracking-widest font-light py-4 rounded-sm transition-all duration-300 shadow-md flex items-center justify-center gap-2 group active:scale-[0.99]">
+             continue to payment
               <FiArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={14} />
             </button> 
           </div>
