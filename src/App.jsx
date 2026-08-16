@@ -7,6 +7,7 @@ import Register from "./components/pages/Register"
 import Login from "./components/pages/Login";
 import ResetPassword from "./components/pages/ResetPassword";
 import ForgotPassword from "./components/pages/ForgotPassword";
+import PaymentCallback from "./PaymentCallback"
 function App() {
   return (
     <Routes>
@@ -19,6 +20,7 @@ function App() {
       <Route path="/login" element={<Login/>}/>
     <Route path="/reset-password/:token" element={<ResetPassword />}/>
     <Route path="/forgot-password/" element={<ForgotPassword />}/>
+   <Route path ="/payment-callback" element= {<PaymentCallback/>}/>
     </Routes>
   );
 }
