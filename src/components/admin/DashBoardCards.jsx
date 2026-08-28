@@ -5,17 +5,19 @@ function DashboardCards() {
   const [stats, setStats] = useState({
     totalProducts: 0,
     featuredProducts: 0,
-    outOfStockProducts: 0,
+    totalOrders: 0,
     totalSubscribers: 0,
   });
 
   useEffect(() => {
     const fetchDashboardStats = async () => {
+      console.log("Fetching Dashboard Stats here........");
       try {
         const response = await api.get("/dashboard/stats");
+        console.log(":DASHBOARD STATS:", response.data);
         setStats(response.data);
       } catch (error) {
-        console.error("Error fetching dashboard stats:", error);
+        console.error("Error fetching dashboard stats:", error.response?.data || error.message);
       }
     };
 
@@ -39,9 +41,9 @@ function DashboardCards() {
       </div>
 
       <div className="bg-stone-900 p-6 rounded">
-        <p className="text-stone-400 text-sm">Out Of Stock</p>
+        <p className="text-stone-400 text-sm">Total Orders</p>
         <h2 className="text-3xl font-bold mt-2">
-          {stats.outOfStockProducts}
+          {stats.totalOrders}
         </h2>
       </div>
 

@@ -1,55 +1,66 @@
 import { useState } from "react";
 import api from "../../services/api";
 import { FiX } from "react-icons/fi";
+import {toast} from "react-hot-toast";
 
 function Checkout({ cartItems, onClose }) {
   const [customerName, setCustomerName] = useState("");
   const [customerEmail, setCustomerEmail] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
   const [shippingAddress, setShippingAddress] = useState("");
+  const [isProcessing, setIsProcessing]= useState(false);
   console.log("Cart Item", cartItems);
   const handleCreateOrder = async () => {
-    try {
-      const response = await api.post("/orders", {
-        customerName,
-        customerEmail,
-        customerPhone,
-        shippingAddress,
-        products: cartItems.map((item) => ({
-          product: item._id,
-          quantity: item.quantity || 1,
-        })),
-        totalPrice: cartItems.reduce(
-          (total, item) => total + item.price * (item.quantity || 1),
-          0
-        ),
-      });
+  if (isProcessing) return;
 
-  const orderId = response.data.order._id;
-  const paymentResponse = await api.post("/orders/pay",{
-    email:customerEmail,
-    amount: cartItems.reduce((total,item)=> total +item.price * (item.quantity || 1),0),
-    orderId,
-  });
-window.location.href= paymentResponse.data.data.authorization_url    
-} catch (error) {
-      console.error(error);
-    }
-  };
+  try {
+    setIsProcessing(true);
+
+    const response = await api.post("/orders", {
+      customerName,
+      customerEmail,
+      customerPhone,
+      shippingAddress,
+      products: cartItems.map((item) => ({
+        product: item._id,
+        quantity: item.quantity || 1,
+      })),
+      totalPrice: cartItems.reduce(
+        (total, item) =>
+          total + item.price * (item.quantity || 1),
+        0
+      ),
+    });
+
+    const orderId = response.data.order._id;
+
+    const paymentResponse = await api.post("/orders/pay", {
+      email: customerEmail,
+      amount: cartItems.reduce(
+        (total, item) =>
+          total + item.price * (item.quantity || 1),
+        0
+      ),
+      orderId,
+    });
+
+    window.location.href =
+      paymentResponse.data.data.authorization_url;
+
+  } catch (error) {
+    console.error("Checkout error:", error);
+    setIsProcessing(false);
+  }
+};
    
   return (
     <div className="w-full min-h-full bg-[#111111] text-white p-6 md:p-8 rounded-lg border border-[#2a2a2a]">
 
       {/* Header */}
       <div className="mb-8">
-        <button
-            onClick={onClose}
-            className="text-stone-600 hover:text-black"
-          >
-            <FiX size={24}/>
-          </button>
+   
         <p className="text-[#c9a227] text-xs tracking-[0.3em] uppercase mb-2">
-          Checkout
+          <i>Checkout </i>
         </p>
         
         <h2 className="text-2xl md:text-3xl font-semibold tracking-wide">
@@ -157,17 +168,17 @@ window.location.href= paymentResponse.data.data.authorization_url
               .toLocaleString()}
           </span>
         </div>
-
-        <button
-          type="button"
-          onClick={handleCreateOrder}
-          className="w-full bg-[#c9a227] hover:bg-[#b08d20]
-          text-black font-semibold py-4 rounded-md
-          transition-all duration-300 tracking-wide
-          hover:shadow-[0_0_20px_rgba(201,162,39,0.25)]"
-        >
-          Continue to Payment
-        </button>
+     <button
+  type="button"
+  onClick={handleCreateOrder}
+  disabled={isProcessing}
+  className="w-full bg-[#c9a227] hover:bg-[#b08d20]
+  disabled:opacity-50 disabled:cursor-not-allowed
+  text-black font-semibold py-4 rounded-md
+  transition-all duration-300 tracking-wide"
+>
+  {isProcessing ? "Processing Payment..." : "Continue to Payment"}
+</button>
 
       </div>
 
