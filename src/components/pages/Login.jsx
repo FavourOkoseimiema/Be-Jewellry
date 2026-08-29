@@ -4,7 +4,7 @@ import { Loader2 } from "lucide-react";
 import toast from "react-hot-toast";
 import api from "../../../services/api";
 import { useAuth } from "../../Context/AuthContext";
-
+import { FiArrowLeftCircle } from "react-icons/fi";
 function Login() {
   const navigate = useNavigate();
   const { login } = useAuth();
@@ -71,7 +71,7 @@ function Login() {
     <div className="min-h-screen bg-black text-white flex items-center justify-center px-4 py-12">
 
       <div className="w-full max-w-md bg-stone-900 p-8 rounded-lg shadow-xl">
-
+<button onClick={() => navigate("/")} className="text-amber-500   "><FiArrowLeftCircle/></button>
         {/* Header */}
 
         <div className="text-center mb-8">
