@@ -34,15 +34,16 @@ return (
     </button>
   </>
 ) : (
-  <>
-    <Link to="/login" className="hover:text-amber-500 transition-colors">
-      Login
-    </Link>
+  // <>
+  //   <Link to="/login" className="hover:text-amber-500 transition-colors">
+  //     Login
+  //   </Link>
         
-    <Link to="/register" className="hover:text-amber-500 transition-colors">
-      Register
-    </Link>
-  </>
+  //   <Link to="/register" className="hover:text-amber-500 transition-colors">
+  //     Register
+  //   </Link>
+  // </>
+<h1>Welcome to our exquisite Jewelry Store</h1>
 )}
 
 </div>
