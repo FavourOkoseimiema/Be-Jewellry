@@ -14,16 +14,11 @@ function ProductCard({ product, onAddToCart, onProductSelect }) {
   const {isAuthenticated} = useAuth();
 
   const handleAddToCart = ()=> {
-    console.log("BUTTON CLICKED");
-  console.log("isAuthenticated:", isAuthenticated);
-
     if (!isAuthenticated) {
-      console.log("user is not logged in")
       toast.error("Please log in to Add items to cart");
       navigate("/login");
       return;
     }
-    console.log("user is logged in")
     if (onAddToCart) {
       onAddToCart(product);
     };

@@ -145,9 +145,9 @@ Contact
 </nav>
 {/* ICON AREA */}
 <div className="flex items-center gap-5 text-stone-800 ">
-<button onClick={() => navigate("/admin/login")}><FiUser size={20}/></button>
+<button onClick={() => navigate("/login")}><FiUser size={20}/></button>
 <button className="relative">
-<FiHeart size={20}/>
+
 
 {
 wishlistCount > 0 &&

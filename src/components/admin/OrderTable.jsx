@@ -41,6 +41,18 @@ function OrderTable() {
     setUpdatingOrder(null);
   }
 };
+
+const handleDeleteOrder = async (req,res)=>{
+  try {
+    setOrderError("")
+      await api.delete(`/orders/${orderId}`)
+      setOrders((currentOrders)=> currentOrders.filter((order)=> order._id !== orderId));
+  } catch (error) {
+    setOrderError(
+      error.response?.data?.message || "Failed to delete order, it might not be up to 30 days old"
+    )
+  }
+}
   return (
     
   <div className="min-h-screen bg-stone-950 p-6">
@@ -156,7 +168,7 @@ function OrderTable() {
               </option>
 
               <option value="Shipped">
-                Shipped
+                Packaged
               </option>
 
               <option value="Delivered">
@@ -164,6 +176,13 @@ function OrderTable() {
               </option>
 
             </select>
+                              <button
+  type="button"
+  onClick={() => handleDeleteOrder(order._id)}
+  className="w-full mt-3 px-4 py-2.5 rounded-lg bg-red-950 text-red-300 border border-red-900 hover:bg-red-900 transition"
+>
+  Delete Order
+</button>
 
           </div>
 

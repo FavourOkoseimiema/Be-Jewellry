@@ -13,9 +13,6 @@ function PaymentCallback() {
   const verifyPayment = async () => {
  try {
   const response = await api.get(`/orders/verify/${reference}`);
-
-  console.log("Verification response:", response.data);
-
   if (response.data.paymentStatus === "success") {
     setPaymentStatus("success");
     setMessage(

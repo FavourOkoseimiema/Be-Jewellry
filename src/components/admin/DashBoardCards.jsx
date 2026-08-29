@@ -11,7 +11,6 @@ function DashboardCards() {
 
   useEffect(() => {
     const fetchDashboardStats = async () => {
-      console.log("Fetching Dashboard Stats here........");
       try {
         const response = await api.get("/dashboard/stats");
         console.log(":DASHBOARD STATS:", response.data);

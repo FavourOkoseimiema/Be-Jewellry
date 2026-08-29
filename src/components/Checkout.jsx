@@ -9,7 +9,6 @@ function Checkout({ cartItems, onClose }) {
   const [customerPhone, setCustomerPhone] = useState("");
   const [shippingAddress, setShippingAddress] = useState("");
   const [isProcessing, setIsProcessing]= useState(false);
-  console.log("Cart Item", cartItems);
   const handleCreateOrder = async () => {
   if (isProcessing) return;
 
